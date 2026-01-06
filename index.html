@@ -1,47 +1,89 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do Giornaliera</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; }
-    label { display: block; margin: 10px 0; }
-  </style>
-</head>
-<body>
-
-<h2>To-Do di Oggi</h2>
-
-<label><input type="checkbox" id="task1"> Arieggiare le stanze</label>
-<label><input type="checkbox" id="task2"> Rifare i letti</label>
-<label><input type="checkbox" id="task3"> Svuotare stoviglie</label>
-<label><input type="checkbox" id="task4"> Passare aspirapolvere</label>
-<label><input type="checkbox" id="task5"> Riordinare oggetti fuori posto</label>
-<label><input type="checkbox" id="task6"> Pulizia veloce bagni</label>
-<label><input type="checkbox" id="task7"> Pulire tavolo</label>
-<label><input type="checkbox" id="task8"> Pulire piano cucina</label>
-<label><input type="checkbox" id="task9"> Buttare immondizia</label>
-
 <script>
-  const today = new Date().toISOString().slice(0,10);
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = today.getMonth(); // 0 = gennaio
+const dd = today.getDay();   // 0 = domenica
 
-  const lastDate = localStorage.getItem("lastDate");
+const container = document.body;
 
-  if (lastDate !== today) {
-    localStorage.clear(); // reset giornaliero
-    localStorage.setItem("lastDate", today);
+// ---------- FUNZIONE UTILE ----------
+function addTask(id, text, resetDaily = true) {
+  const key = resetDaily
+    ? `${id}-${yyyy}-${mm}-${today.getDate()}`
+    : `${id}-${yyyy}-${mm}`;
+
+  if (localStorage.getItem(key) === "done") return;
+
+  const label = document.createElement("label");
+  const cb = document.createElement("input");
+  cb.type = "checkbox";
+
+  cb.onchange = () => {
+    if (cb.checked) localStorage.setItem(key, "done");
+  };
+
+  label.appendChild(cb);
+  label.append(" " + text);
+  container.appendChild(label);
+}
+
+// ---------- GIORNALIERI (lascia i tuoi) ----------
+// ESEMPIO:
+// addTask("daily1", "Bere acqua");
+// addTask("daily2", "Camminare 20 min");
+
+// ---------- SETTIMANALI ----------
+const weekly = {
+  1: ["Materassi e cambio lenzuola", "Spolverare"],           // Lunedì
+  2: ["Spolverare"],                                          // Martedì
+  3: ["Pavimenti e bagni"],                                   // Mercoledì
+  4: ["Bucato"],                                              // Giovedì
+  5: ["Bidoni e tappeti"],                                    // Venerdì
+  0: ["Aspirapolvere"]                                        // Domenica
+};
+
+if (weekly[dd]) {
+  weekly[dd].forEach(t =>
+    addTask("weekly-" + t, t)
+  );
+}
+
+// ---------- MENSILI ----------
+const monthly = [
+  "Frigo",
+  "Forno e microonde",
+  "Lavastoviglie e cappa",
+  "Lavatrice e asciugatrice",
+  "Pulizia profonda aspirapolvere",
+  "Vetri",
+  "Battiscopa",
+  "Porte",
+  "Interruttori",
+  "Giardino"
+];
+
+monthly.forEach(t =>
+  addTask("monthly-" + t, t, false)
+);
+
+// ---------- STRAORDINARIE ----------
+const special = [
+  { task: "Scarichi", months: [0,5,10] },                    // gen giu nov
+  { task: "Mobili sotto e dietro", months: [1,5,9] },
+  { task: "Decalcificazione macchina caffè e bollitore", months: [1,6,11] },
+  { task: "Interno dei cassetti", months: [0,4,8] },
+  { task: "Termosifoni e condizionatori", months: [4,9] },
+  { task: "Soffitto e pareti", months: [2,6,10] },
+  { task: "Spolverare in alto", months: [3,7,11] },
+  { task: "Pavimento giardino", months: [3,7] },
+  { task: "Ordinare giardino", months: [2,6,10] },
+  { task: "Cambio stagione", months: [3,9] },
+  { task: "Marciapiede e muri esterni", months: [0,8] }
+];
+
+special.forEach(s => {
+  if (s.months.includes(mm)) {
+    addTask("special-" + s.task, s.task, false);
   }
-
-  document.querySelectorAll("input[type=checkbox]").forEach(cb => {
-    const saved = localStorage.getItem(cb.id);
-    cb.checked = saved === "true";
-
-    cb.addEventListener("change", () => {
-      localStorage.setItem(cb.id, cb.checked);
-    });
-  });
+});
 </script>
-
-</body>
-</html>
