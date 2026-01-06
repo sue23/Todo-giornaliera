@@ -1,14 +1,13 @@
 # 🧹 To-Do Pulizie Domestiche
 
-Questa è una **web app semplice e intuitiva** per gestire le pulizie di casa tramite una **to-do list intelligente**, pensata per essere usata **da iPhone come un’app** (tramite GitHub Pages).
+Questa è una **web app semplice e intelligente** per gestire le pulizie di casa tramite una **to-do list automatica**, pensata per essere usata **da iPhone come un’app** (tramite GitHub Pages).
 
-L’app organizza le attività in base alla loro **frequenza**:
-- giornaliera
-- settimanale
-- mensile
-- straordinaria (in mesi specifici)
+Le attività vengono mostrate automaticamente in base a:
+- giorno della settimana
+- giorno del mese
+- mese dell’anno
 
-Ogni attività compare **automaticamente** secondo regole precise e scompare quando viene completata.
+Ogni task scompare quando viene completato e ricompare secondo regole precise.
 
 ---
 
@@ -17,7 +16,8 @@ Ogni attività compare **automaticamente** secondo regole precise e scompare qua
 2. Tocca **Condividi → Aggiungi alla schermata Home**
 3. Usala come una normale app
 
-Funziona anche **offline**.
+✔ Funziona anche offline  
+✔ Nessuna registrazione richiesta
 
 ---
 
@@ -42,66 +42,79 @@ Funziona anche **offline**.
 ---
 
 ### 🗓️ Attività settimanali
-- Compaiono **solo nel giorno della settimana corretto**
+- Compaiono **solo nel giorno corretto**
 - Si resettano il giorno successivo
 
 **Programmazione:**
-- **Lunedì** → 🛏️ Materassi e cambio lenzuola, 🪶 Spolverare  
-- **Martedì** → 🪶 Spolverare  
-- **Mercoledì** → 🚿🧽 Pavimenti e bagni  
-- **Giovedì** → 👕 Bucato  
-- **Venerdì** → ♻️🧺 Bidoni e tappeti  
-- **Domenica** → 🧹 Aspirapolvere  
+- 🛏️ Materassi e cambio lenzuola (**Lunedì**)
+- 🪶 Spolverare (**Lunedì**)
+- 🪶 Spolverare (**Martedì**)
+- 🚿🧽 Pavimenti e bagni (**Mercoledì**)
+- 👕 Bucato (**Giovedì**)
+- ♻️🧺 Bidoni e tappeti (**Venerdì**)
+- 🧹 Aspirapolvere (**Domenica**)
 
 ---
 
 ### 🗂️ Attività mensili
 - Compaiono **all’inizio del mese**
-- Restano visibili **finché non vengono completate**
-- Una volta spuntate, **scompaiono**
-- Ricompaiono automaticamente il **mese successivo**
+- Restano visibili finché non vengono completate
+- Hanno un **giorno del mese consigliato**
+- Il **giorno della settimana viene calcolato automaticamente**
+- Se oggi coincide con il giorno consigliato, compare ⭐ **“Consigliato oggi”**
 
-**Attività incluse:**
-- ❄️ Frigo  
-- 🔥 Forno e microonde  
-- 🍽️💨 Lavastoviglie e cappa  
-- 👕🔄 Lavatrice e asciugatrice  
-- 🧹✨ Pulizia profonda aspirapolvere  
-- 🪟 Vetri  
-- 📏 Battiscopa  
-- 🚪 Porte  
-- 🔘 Interruttori  
-- 🌿 Giardino  
+**Programmazione (giorno del mese):**
+- ❄️ Frigo → **5**
+- 🔥 Forno e microonde → **7**
+- 🍽️💨 Lavastoviglie e cappa → **10**
+- 👕🔄 Lavatrice e asciugatrice → **12**
+- 🧹✨ Pulizia profonda aspirapolvere → **15**
+- 🪟 Vetri → **18**
+- 📏 Battiscopa → **20**
+- 🚪 Porte → **22**
+- 🔘 Interruttori → **25**
+- 🌿 Giardino → **28**
+
+> 💡 Nota: se il mese ha meno giorni (es. febbraio), il task resta comunque visibile per tutto il mese.
 
 ---
 
 ### 🚨 Pulizie straordinarie
-- Compaiono **solo in mesi specifici**
-- Restano visibili per tutto il mese finché non vengono completate
-- Ricompaiono automaticamente negli stessi mesi dell’anno successivo
+- Compaiono **solo nei mesi indicati**
+- Restano visibili finché non vengono completate
+- Hanno un **giorno del mese consigliato**
+- Mostrano ⭐ **“Consigliato oggi”** se la data coincide
 
 **Programmazione:**
-- 🚰 Scarichi → gennaio, giugno, novembre  
-- 🛋️ Mobili sotto e dietro → febbraio, giugno, ottobre  
-- ☕🫖 Decalcificazione macchina caffè e bollitore → febbraio, luglio, dicembre  
-- 🗄️ Interno dei cassetti → gennaio, maggio, settembre  
-- ♨️❄️ Termosifoni e condizionatori → maggio, ottobre  
-- 🏠 Soffitto e pareti → marzo, luglio, novembre  
-- 📦 Spolverare in alto → aprile, agosto, dicembre  
-- 🌱 Pavimento giardino → aprile, agosto  
-- 🌳 Ordinare giardino → marzo, luglio, novembre  
-- 👚 Cambio stagione → aprile, ottobre  
-- 🧱 Marciapiede e muri esterni → gennaio, settembre  
+- 🚰 Scarichi → gennaio, giugno, novembre (**giorno 10**)
+- 🛋️ Mobili sotto e dietro → febbraio, giugno, ottobre (**giorno 15**)
+- ☕🫖 Decalcificazione macchina caffè e bollitore → febbraio, luglio, dicembre (**giorno 5**)
+- 🗄️ Interno dei cassetti → gennaio, maggio, settembre (**giorno 20**)
+- ♨️❄️ Termosifoni e condizionatori → maggio, ottobre (**giorno 10**)
+- 🏠 Soffitto e pareti → marzo, luglio, novembre (**giorno 18**)
+- 📦 Spolverare in alto → aprile, agosto, dicembre (**giorno 8**)
+- 🌱 Pavimento giardino → aprile, agosto (**giorno 22**)
+- 🌳 Ordinare giardino → marzo, luglio, novembre (**giorno 15**)
+- 👚 Cambio stagione → aprile, ottobre (**giorno 5**)
+- 🧱 Marciapiede e muri esterni → gennaio, settembre (**giorno 12**)
 
 ---
 
-## 💾 Come vengono salvati i dati
-- Lo stato delle attività viene salvato in **localStorage**
-- Nessun account richiesto
-- Nessun dato inviato online
-- I dati restano sul dispositivo
+## ⭐ “Consigliato oggi”
+Il badge **⭐ Consigliato oggi** appare quando:
+- il task è visibile
+- oggi coincide con il **giorno del mese suggerito**
 
-⚠️ Nota: cambiando dominio (es. rinominando la repository) le checklist ripartono vuote.
+👉 Serve come **suggerimento**, non come scadenza rigida.
+
+---
+
+## 💾 Salvataggio dei dati
+- Lo stato delle attività è salvato in **localStorage**
+- I dati restano **solo sul dispositivo**
+- Nessun dato viene inviato online
+
+⚠️ Cambiando dominio (es. rinominando la repository), le checklist ripartono vuote.
 
 ---
 
@@ -114,12 +127,13 @@ Funziona anche **offline**.
 ---
 
 ## 🎯 Obiettivo
-Avere una **gestione chiara, sostenibile e senza stress** delle pulizie di casa, senza dover ricordare tutto a memoria.
+Ridurre il **carico mentale**, distribuire le pulizie nel tempo e avere sempre chiaro **cosa fare oggi**, senza dover ricordare tutto.
 
 ---
 
-## ✨ Possibili miglioramenti futuri
-- Barra di avanzamento mensile
-- Evidenziazione delle priorità
+## ✨ Miglioramenti futuri possibili
+- Barra di avanzamento giornaliera/mensile
 - Nascondere automaticamente le sezioni vuote
+- Evidenziazione delle priorità
 - Storico delle attività completate
+- Notifiche soft
